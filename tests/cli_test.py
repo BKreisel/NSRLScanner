@@ -1,7 +1,7 @@
 import os
 import unittest
 
-from macnsrl import cli
+from nsrlscanner import cli
 
 class CLITestClass(unittest.TestCase):
     @classmethod

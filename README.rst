@@ -1,7 +1,7 @@
-MacNSRL
+NSRLScanner
 =======
 
-MacNSRL is an tool for OS X that will verify files in a specified directory
+NSRLScanner is a python tool that will verify files in a specified directory
 against the `NIST NSRL Database`_.
 
 .. Hyperlinks

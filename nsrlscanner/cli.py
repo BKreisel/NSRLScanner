@@ -2,6 +2,8 @@
 import argparse
 import sys
 
+import database as db
+
 def create_parser():
     """ Create Parser Object
 
@@ -21,6 +23,8 @@ def main():
     """CLI Main Function and Argument Handler"""
     parser = create_parser()
     args = parser.parse_args()
+
+    db_file = db.load_database(args.nsrl_db)
 
 if __name__ == '__main__':
     sys.exit(main())

@@ -45,7 +45,6 @@ def main():
     if not validate_path(args.path):
         print("[-] Error: Path \"" + args.path + "\" does not exist")
         sys.exit(1)
-        
     db_file = db.load_database(args.nsrl_db)
 
 if __name__ == '__main__':

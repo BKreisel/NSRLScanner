@@ -15,24 +15,23 @@ class FileTestClass(unittest.TestCase):
 class FileTests(FileTestClass):
 
     def test_bad_file(self):
-        self.write_tmp_file(self.tmpfile,"Scrabdoodle\n")
+        write_tmp_file(self.tmpfile,"Scrabdoodle\n")
         with self.assertRaises(SystemExit):
             f = database.load_database(self.tmpfile)
         os.remove(self.tmpfile)
 
     def test_good_file(self,):
-        self.write_tmp_file(self.tmpfile, self.file_header)
+        write_tmp_file(self.tmpfile, self.file_header)
         f = database.load_database(self.tmpfile)
         print(f)
         #self.assertTrue(hasattr(f,'read'))
         os.remove(self.tmpfile)
 
-    #Helper Functions
-
-    def write_tmp_file(self,filename,contents):
-        #Write a file to current directory
-        with open(filename,'w') as f:
-            f.write(contents)
-
 if __name__ == '__main__':
     unittest.main()
+
+#Helper Functions
+def write_tmp_file(filename,contents):
+    #Write a file to current directory
+    with open(filename,'w') as f:
+        f.write(contents)

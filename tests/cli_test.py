@@ -40,8 +40,6 @@ class PathTests(unittest.TestCase):
         os.makedirs('test_dir')
         self.assertTrue(cli.validate_path('test_dir'))
         os.rmdir('test_dir')
-    def test_expand_dir(self):
-        self.assertTrue(cli.validate_path('~'))
 
 if __name__ == '__main__':
     unittest.main()

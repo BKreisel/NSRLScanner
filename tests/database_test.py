@@ -31,7 +31,7 @@ class FileTests(FileTestClass):
 
     def write_tmp_file(self,filename,contents):
         #Write a file to current directory
-        with open("tmpfile",'w') as f:
+        with open(filename,'w') as f:
             f.write(contents)
 
 if __name__ == '__main__':

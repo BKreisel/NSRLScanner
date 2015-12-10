@@ -29,9 +29,7 @@ def validate_path(path):
 
         :returns: Boolean for file validity
     """
-    print(path)
     path = os.path.expandvars(path)
-    print(path)
     if os.path.exists(path):
         return True
     return False

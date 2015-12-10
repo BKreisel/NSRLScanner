@@ -16,7 +16,9 @@ def create_parser():
     parser.add_argument(
         'nsrl_db', help='TXT file containing NSRL Database'
     )
-
+    parser.add_argument(
+        'path', help='file or directory to scan'
+    )
     return parser
 
 def main():

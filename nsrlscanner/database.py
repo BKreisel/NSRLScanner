@@ -22,3 +22,4 @@ def load_database(filename):
             return filename
     except IOError as e:
         print("[-] File Read Error: " + str(e))
+        sys.exit(1)

@@ -19,6 +19,6 @@ def load_database(filename):
             if  file_header != db_header:
                 print("[-] Error: NSRL Database is formatted incorrectly")
                 sys.exit(1)
-            return db
+            return filename
     except IOError as e:
         print("[-] File Read Error: " + str(e))

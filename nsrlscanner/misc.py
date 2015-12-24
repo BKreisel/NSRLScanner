@@ -12,9 +12,9 @@ def generate_file_list(root):
         :returns array of file locations
     """
     file_array = []
-    for root, dirs, files in os.walk(root):
-        for file in files:
-            file_array.append(os.path.join(root,file))
+    for root, dirs, files in os.walk(root): # pylint: disable=W0612
+        for f in files:
+            file_array.append(os.path.join(root, f))
 
     if len(file_array) == 0:
         print("[!] Error: No files Found in specified path. Exiting.")

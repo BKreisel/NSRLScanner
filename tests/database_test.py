@@ -23,6 +23,7 @@ class FileTests(FileTestClass):
     def test_good_file(self,):
         write_tmp_file(self.tmpfile, self.file_header)
         f = database.load_database(self.tmpfile)
+        f = open(f,'r')
         self.assertTrue(hasattr(f,'read'))
         os.remove(self.tmpfile)
 

@@ -3,6 +3,8 @@ import argparse
 import os
 import sys
 
+from tqdm import tqdm
+
 import database as db
 import hash as hashylib
 import misc
@@ -53,7 +55,7 @@ def main():
 
     hashes = []
 
-    for item in scan_list:
+    for item in tqdm(scan_list):
         hashes.append(hashylib.HashedPath(item))
 
     print("\n[+]  -- Scanning Database --\n")

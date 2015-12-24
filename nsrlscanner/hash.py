@@ -2,6 +2,8 @@
 import hashlib
 import sys
 
+from tqdm import tqdm
+
 def hash_file(path):
     """MD5 Hash a File
 
@@ -54,7 +56,7 @@ def scan_database(hash_list, database):
         with open(database, 'r') as db:
             db.readline() # Strip out the header
 
-            for line in db:
+            for line in tqdm(db):
                 items = line.lower().split(",")
                 #pylint: disable=W0612
                 sha1, md5 = items[0].strip('"'), items[1].strip('"')

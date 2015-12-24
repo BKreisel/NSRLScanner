@@ -10,7 +10,7 @@ config = {
     'download_url': 'https://www.github.com/bkreisel/NSRLScanner',
     'author_email': 'kreiselb@gmail.com',
     'version': '0.1',
-    'install_requires': ['nose','pylint'],
+    'install_requires': ['nose','pylint','tqdm'],
     'packages': ['nsrlscanner'],
     'scripts': [],
     'entry_points': {

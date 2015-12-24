@@ -2,6 +2,7 @@
 import argparse
 import os
 import sys
+import time
 
 from tqdm import tqdm
 
@@ -41,6 +42,8 @@ def validate_path(path):
 
 def main():
     """CLI Main Function and Argument Handler"""
+    start_time = time.time()
+
     parser = create_parser()
     args = parser.parse_args()
 
@@ -67,5 +70,16 @@ def main():
     for item in unmatched_list:
         print(item.get_path())
 
+    run_time = time.time() - start_time
+    no_access= len(filter(lambda x: x.get_hash() == None, hashes))
+    actually_scanned = len(scan_list) - no_access
+    verified = actually_scanned - len(unmatched_list)
+    print("\n[+] -- Statistics --\n")
+    print("Execution Time: " + "{0:.1f}".format(run_time) + " seconds")
+    print("Targeted Files: " + str(len(scan_list)) + "\n")
+    print("Scanned Files: " + str(actually_scanned))
+    print("Inaccessable Files: " + str(no_access) + "\n")
+    print("Verified Files: " + str(verified))
+    print("Unverified Files: " + str(len(unmatched_list)))
 if __name__ == '__main__':
     sys.exit(main())

@@ -39,3 +39,32 @@ class HashedPath(tuple):
     def get_path(self): #pylint: disable=C0111
         return self[0]
 
+def scan_database(hash_list, database):
+    """Scan NSRL Database and Print out Results
+
+        :arg hash_list: Array of HashedPath Objects
+        :arg database: NSRLDatabase Filename
+
+    """
+
+    #Filter out permission and hashing issues (reported earlier)
+    unmatched = filter(lambda x: x.get_hash() != None, hash_list)
+
+    try:
+        with open(database, 'r') as db:
+            db.readline() # Strip out the header
+
+            for line in db:
+                items = line.lower().split(",")
+                #pylint: disable=W0612
+                sha1, md5 = items[0].strip('"'), items[1].strip('"')
+
+                for item in unmatched:
+                    if item.get_hash() == md5:
+                        unmatched.remove(item)
+
+    except IOError as e:
+        print("[-] File Read Error: " + str(e))
+        sys.exit(1)
+
+    return unmatched

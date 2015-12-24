@@ -56,6 +56,14 @@ def main():
     for item in scan_list:
         hashes.append(hashylib.HashedPath(item))
 
+    print("\n[+]  -- Scanning Database --\n")
+
+    unmatched_list = sorted(hashylib.scan_database(hashes, filename),
+                            key=lambda x: x.get_path())
+
+    print("[+] Files Not in Database: \n")
+    for item in unmatched_list:
+        print(item.get_path())
 
 if __name__ == '__main__':
     sys.exit(main())

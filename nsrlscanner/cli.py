@@ -4,6 +4,8 @@ import os
 import sys
 
 import database as db
+import hash as hashylib
+import misc
 
 def create_parser():
     """ Create Parser Object
@@ -43,7 +45,17 @@ def main():
     if not validate_path(args.path):
         print("[-] Error: Path \"" + args.path + "\" does not exist")
         sys.exit(1)
-    db_file = db.load_database(args.nsrl_db)
+
+    filename = db.load_database(args.nsrl_db)
+
+    print("\n[+]  -- Hashing Files --\n")
+    scan_list = misc.generate_file_list(args.path)
+
+    hashes = []
+
+    for item in scan_list:
+        hashes.append(hashylib.HashedPath(item))
+
 
 if __name__ == '__main__':
     sys.exit(main())

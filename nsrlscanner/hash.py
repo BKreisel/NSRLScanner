@@ -1,5 +1,6 @@
 """ NSRLScanner Hashing Library"""
 import hashlib
+import sys
 
 def hash_file(path):
     """MD5 Hash a File
@@ -20,3 +21,21 @@ def hash_file(path):
         else:
             print(("[!] Warning: IOError: " + e.strerror))
             return False
+
+class HashedPath(tuple):
+    """
+        Class to Store Path and Hash Data
+    """
+    __slots__ = ()
+
+    _fields = ('path', 'hash')
+
+    def __new__(cls, p):
+        return tuple.__new__(cls, (p, hash_file(p)))
+
+    def get_hash(self): #pylint: disable=C0111
+        return self[1]
+
+    def get_path(self): #pylint: disable=C0111
+        return self[0]
+

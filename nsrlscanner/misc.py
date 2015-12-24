@@ -14,7 +14,8 @@ def generate_file_list(root):
     file_array = []
     for root, dirs, files in os.walk(root): # pylint: disable=W0612
         for f in files:
-            file_array.append(os.path.join(root, f))
+            abs_path = os.path.abspath(os.path.join(root, f))
+            file_array.append(abs_path)
 
     if len(file_array) == 0:
         print("[!] Error: No files Found in specified path. Exiting.")
